@@ -30,8 +30,6 @@ doctl auth init -t "${DO_ACCESS_TOKEN}"
 echo ${DO_SSH_KEY} | base64 -d > deploy_key
 chmod 600 deploy_key
 
-echo -e "CLIENT_ID=${CLIENT_ID} \nCLIENT_SECRET=${CLIENT_SECRET}" > .env
-
 # Find currently running container ID
 CONTAINER_ID=$(doctl compute ssh ${DROPLET} --ssh-key-path deploy_key --ssh-command 'docker ps | grep takenote | cut -d" " -f1')
 
